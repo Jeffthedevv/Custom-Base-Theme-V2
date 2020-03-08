@@ -1,0 +1,157 @@
+<!-- <section class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>Featured Content</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-7">
+				<div class="row">
+					<div class="col-sm-12">
+
+						<?php
+						$args = array( 'posts_per_page' => 1, 'cat' => 16 );
+						$the_query = new WP_Query( $args );
+						while ( $the_query->have_posts() ) : $the_query->the_post();
+						$feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+						?>
+
+						<a href="<?php the_permalink(); ?>">
+							<div class="gamecover">
+								<div class="mouseover-yellow">
+									<img class="playbutton" src="<?php bloginfo('template_directory'); ?>/img/play.png" alt="">
+								</div>
+								<img class="current-cover" src="<?php echo $feat_image ?>" alt="<?php the_title(); ?>">
+							</div>
+						</a>
+
+						<?php endwhile;
+						wp_reset_postdata(); ?>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="gallery-container">
+							<h2>Meme Gallery</h2>
+							<ul>
+								<?php
+								$args = array( 'posts_per_page' => 8, 'category_name' => 'memes' );
+								$the_query = new WP_Query( $args ); ?>
+
+								<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+								<?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+								<li>
+										<div class="meme-share-box">
+											<a href="<?php echo $url; ?>" target="_blank"><?php the_post_thumbnail(); ?></a>
+											<div class="meme-share-icons">
+
+												<?php
+												$twitterurl = urlencode('Found this cool meme on @FrackFeed! '.$url);
+												$facebookurl = urlencode('Found this cool meme on FrackFeed! '.$url);
+												?>
+
+												<a href="https://twitter.com/intent/tweet?text=<?php echo $twitterurl; ?>&url=%20" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+												<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank"><i class="fa fa-facebook fa-3x"></i></a>
+											</div>
+								</li>
+								<?php endwhile;
+								wp_reset_postdata(); ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<h2>Featured Listicle</h2>
+
+						<?php
+						$args = array( 'posts_per_page' => 1, 'offset'=> 0, 'cat'=> 7 );
+						$the_query = new WP_Query( $args ); ?>
+
+						<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+						<div class="featured-listicle">
+							<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+							<a href="<?php the_permalink(); ?>">
+								<?php the_post_thumbnail(); ?>
+							</a>
+						</div>
+						<?php endwhile;
+						wp_reset_postdata(); ?>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="row">
+					<div class="col-md-10">
+						<div class="hot-topics">
+							<h1>Hot Topics</h1>
+							<ul>
+								<?php
+								$args = array( 'posts_per_page' => 3, 'offset'=> 0, 'cat'=> 2 );
+								$the_query = new WP_Query( $args ); ?>
+
+								<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+								<li>
+									<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+									<a href="<?php the_permalink(); ?>">
+										<?php the_post_thumbnail(); ?>
+									</a>
+
+									<?php $strip_excerpt = strip_tags(get_the_excerpt() ); ?>
+
+									<p><?php echo $strip_excerpt; ?> <a href="<?php the_permalink(); ?>">Read More</a></p>
+								</li>
+							<?php endwhile; ?>
+							<?php wp_reset_postdata(); ?>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<a href="<?php echo site_url(); ?>#ask">
+						<div class="side-button">
+							<i class="fa fa-envelope fa-3x"></i>
+						</div>
+					</a>
+					<a href="http://hrefshare.com/8848" target="_blank">
+						<div class="side-button">
+							<i class="fa fa-facebook-square fa-3x"></i>
+						</div>
+					</a>
+					<a href="http://hrefshare.com/e551e" target="_blank">
+						<div class="side-button">
+							<i class="fa fa-twitter fa-3x"></i>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section> -->
+
+
+<!-- <section class="question-form" id="ask">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<img src="<?php bloginfo('template_directory'); ?>/img/barbie_FF.png" alt="Barbie Frack Feed">
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<?php echo do_shortcode('[gravityform id="1" title="false" description="false"]'); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="trivia">
+	<div class="container">
+		<h1>Trivia Center</h1>
+		<div class="row">
+			<?php echo get_template_part('partials/trivia' ); ?>
+		</div>
+	</div>
+</section> -->

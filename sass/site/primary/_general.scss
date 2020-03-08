@@ -1,0 +1,488 @@
+// Colors
+@mixin gradient($color1, $color2, $direction) {
+    // vertical or horizontal
+    background-color: $color1;
+    @include filter-gradient($color1, $color2, $direction);
+    @include background-image(linear-gradient(top, $color1 0%, $color2 100%));
+}
+
+// Animation
+@mixin animate($animate-time) {
+    -webkit-transition: $animate-time;
+    transition: $animate-time;
+}
+
+$time: 0.3s;
+a {
+    @include animate($time);
+}
+
+// Typography
+%nobullets {
+    list-style: none;
+    padding-left: 0;
+}
+
+a:focus {
+    // Bootstrap Override
+    outline-width: 0 !important;
+}
+
+a {
+    font-weight: 700;
+}
+
+%red-button {
+    margin-top: 15px;
+    background-color: $red;
+    border-width: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+    padding: 5px 20px;
+    font-size: 18px;
+    -webkit-box-shadow: -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+    box-shadow: -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+    @media (min-width: 1025px) {
+        @include animate($time);
+        &:hover {
+            background-color: darken($red, 10%);
+        }
+    }
+}
+
+// Layout
+.navbar-nav.nav-justified>li {
+    float: none;
+    white-space: nowrap;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+header.dtheader {
+    padding: 30px 0 20px;
+    position: relative;
+    @media (max-width: 767px) {
+        display: none;
+    }
+    p {
+        font-size: 10px;
+        margin-top: 10px;
+    }
+    nav {
+        margin-top: 20px;
+        li {
+            border-color: #b1b1b1;
+            border-width: 0 0 0 1px;
+            border-style: solid;
+        }
+        li:last-child {
+            background-color: $red;
+            padding: 5px 20px;
+            border-width: 0;
+            @include animate($time);
+            a {
+                color: #fff !important;
+            }
+            &:hover {
+                background-color: darken($red, 10%);
+            }
+        }
+    }
+    .share-buttons {
+        @extend %nobullets;
+        margin-bottom: 0;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+    }
+}
+
+.gradient-border {
+    @include gradient(#f5f5f5, #dededf, vertical);
+    height: 40px;
+    img {
+        display: none;
+    }
+    @media (max-width:767px) {
+        height: auto;
+        padding: 5px 0;
+        z-index: 10;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-style: solid;
+        border-color: darken($gray, 40%);
+        border-width: 0 0 1px 0;
+        .col-xs-6:last-child {
+            text-align: right;
+        }
+        img {
+            display: inline;
+            height: 40px;
+        }
+    }
+}
+
+section.content {
+    padding: 30px 0;
+    background-color: #fff;
+    h2 {
+        font-style: italic;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+.content.article {
+    h1 {
+        color: $blue;
+        font-weight: 700;
+    }
+}
+
+.article-header {
+    padding: 130px 0;
+    // background-image: image-url("articlebg.jpg");
+    @media (min-width: 1025px) {
+        background-attachment: fixed;
+    }
+    background-size:cover;
+    background-position:center bottom;
+    h1 {
+        color: #fff;
+        text-transform: uppercase;
+        border-style: solid;
+        border-color: #fff;
+        border-width: 0 0 4px;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-size: 52pt;
+        letter-spacing: 2px;
+    }
+}
+
+.share-container {
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.hot-topics {
+    background-color: $cream;
+    padding: 10px 25px;
+    h1 {
+        color: $red;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+    ul {
+        @extend %nobullets;
+    }
+    li {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-color: #adb5b2;
+        border-style: solid;
+        border-width: 0 0 1px 0;
+        &:last-child {
+            border-width: 0;
+        }
+    }
+    h3 {
+        font-weight: 700;
+        font-size: 20px;
+        a {
+            color: #000;
+        }
+    }
+    a {
+        color: $red;
+        &:hover {
+            color: $blue;
+        }
+    }
+}
+
+.side-button {
+    background-color: $yellow;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    i {
+        color: $blue;
+    }
+    @media (min-width:1025px) {
+        position: relative;
+        right: 0;
+        @include animate($time);
+        &:hover {
+            right: -10px;
+        }
+    }
+    @media (max-width:768px) {
+        width: 60px;
+        margin: 10px 10px 10px 0;
+        display: inline-block;
+    }
+}
+
+.gallery-container {
+    margin: 20px 0;
+    background-color: $gray;
+    padding: 10px 30px 40px;
+    h2 {
+        color: $red;
+    }
+    li {
+        max-width: 300px;
+    }
+}
+
+.listicle-image {
+    width: 100%;
+}
+
+section.question-form {
+    background-color: $gray;
+    padding: 20px 0;
+    -webkit-box-shadow: inset 0px 7px 6px -3px rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: inset 0px 7px 6px -3px rgba(0, 0, 0, 0.55);
+    box-shadow: inset 0px 7px 6px -3px rgba(0, 0, 0, 0.55);
+    h1 {
+        margin-top: 0;
+        strong {
+            color: $blue;
+        }
+    }
+    input[type=text],
+    input[type=email] {
+        border-radius: 0;
+        display: block;
+        width: 90%;
+        margin: 20px 0 15px;
+        -webkit-box-shadow: inset -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+        -moz-box-shadow: inset -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+        box-shadow: inset -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+        border-width: 0;
+        font-style: italic;
+        padding: 5px;
+    }
+    textarea {
+        -webkit-box-shadow: inset -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+        -moz-box-shadow: inset -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+        box-shadow: inset -3px -3px 6px -3px rgba(0, 0, 0, 0.55);
+        border-width: 0;
+        padding: 15px;
+        width: 100%;
+        height: 200px;
+    }
+    input[type=submit] {
+        @extend %red-button;
+        float: right;
+        margin-right: 10px;
+    }
+    label {
+        display: none;
+    }
+    ul {
+        @extend %nobullets;
+    }
+}
+
+section.trivia {
+    padding-bottom: 60px;
+    h1 {
+        text-align: center;
+        color: $red;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+    @media (max-width:600px) {
+        img {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.entry-content {
+    padding-bottom: 40px;
+    .attachment-post-thumbnail {
+        margin-bottom: 20px;
+    }
+    .image-container {
+        text-align: center;
+    }
+}
+
+footer {
+    padding: 15px 0;
+    @include gradient(#f5f5f5, #dddede, vertical);
+    a {
+        color: #000;
+    }
+    li {
+        border-style: solid;
+        border-color: #b1b1b1;
+        border-width: 0 0 0 1px;
+        &:last-child {
+            border-width: 0 1px 0;
+            a {
+                color: $red !important;
+            }
+        }
+    }
+}
+
+// Category Pages
+.archive article {
+    margin: 20px 0;
+    border-style: solid;
+    border-color: #9f9f9f;
+    border-width: 0 0 1px;
+}
+
+.row:nth-last-child(2) {
+    article {
+        border-width: 0;
+    }
+}
+
+// Home Page Mouse-over effect
+.gamecover {
+    position: relative;
+    overflow-x: hidden;
+    .mouseover-yellow {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: -55%;
+        background-color: rgba($yellow, 0.5);
+        @include animate($time);
+        .playbutton {
+            width: 140px;
+            height: 140px;
+            position: absolute;
+            top: 50%;
+            left: -70px;
+            margin-top: -70px;
+        }
+    }
+    .current-cover {
+        width: 100%;
+    }
+    &:hover {
+        .mouseover-yellow {
+            right: 0%;
+        }
+    }
+}
+
+@media (max-width:1024px) {
+    .mouseover-yellow {
+        display: none;
+    }
+}
+
+// Hot Topics Thumbnails
+@media (min-width:768px) {
+    .category-hot-topics {
+        .attachment-post-thumbnail {
+            max-width: 500px;
+        }
+    }
+}
+
+// Mobile Menu
+.sb-toggle-right {
+    color: $blue;
+    text-shadow: 0px 1px 1px $gray;
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+
+.sb-right {
+    ul {
+        @extend %nobullets;
+    }
+}
+
+// Sign-Up Page
+.gform_fields {
+    @extend %nobullets;
+}
+
+.post-39 {
+    input {
+        width: 100%;
+    }
+    input[type=text],
+    input[type=email] {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #b6b6b6;
+    }
+    #gform_submit_button_2 {
+        @extend %red-button;
+    }
+}
+
+// Meme Sharing
+@media (min-width:1025px) {
+    .meme-share-box {
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+        img {
+            z-index: 2;
+        }
+        .meme-share-icons {
+            position: absolute;
+            z-index: 5;
+            width: 60px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            left: -60px;
+            top: 0px;
+            text-align: center;
+            @include animate($time);
+            i {
+                margin: 10px 0;
+                color: #fff;
+                @include animate($time);
+                &:hover {
+                    color: $yellow;
+                }
+            }
+        }
+        &:hover {
+            .meme-share-icons {
+                left: 0px;
+            }
+        }
+    }
+}
+
+@media (max-width:1024px) {
+    .meme-share-box {
+        .meme-share-icons {
+            margin: 10px 0 20px;
+            text-align: right;
+            i {
+                font-size: 2em;
+                margin-left: 10px;
+            }
+        }
+    }
+}

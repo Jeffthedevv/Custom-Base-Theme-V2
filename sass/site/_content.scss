@@ -1,0 +1,17 @@
+/*--------------------------------------------------------------
+8.1 Posts and pages
+--------------------------------------------------------------*/
+@import "primary/posts-and-pages";
+
+.trivia {
+    .trivia-photo {
+        a {
+            display: block;
+            img {
+                width: 75%;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+}
